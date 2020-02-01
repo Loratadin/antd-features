@@ -2,6 +2,9 @@ import React, { PureComponent } from 'react';
 import { Table } from "antd";
 
 export default class MainPage extends PureComponent {
+    renderMobileTable = (columns) => {
+        return columns.filter(column => column.key === 'name' || column.key === 'city');
+    }
     render() {
         const dataSource = [
             {
@@ -23,7 +26,7 @@ export default class MainPage extends PureComponent {
             },
           ];
 
-          const columns = [
+          let columns = [
             {
               title: 'Name',
               dataIndex: 'name',
@@ -50,6 +53,10 @@ export default class MainPage extends PureComponent {
                 key: 'city',
               },
           ];
+        const isMobile = window.innerWidth < 500;
+        if (isMobile) {
+            columns = this.renderMobileTable(columns);
+        }
         return (
             <Table dataSource={dataSource} columns={columns} />
         );
