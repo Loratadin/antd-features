@@ -12,14 +12,14 @@ export default class MainPage extends PureComponent {
     const { tableView } = this.state;
     const mainView = !tableView;
     return (
-      <React.Fragment>
+      <div className="main__container">
         {mainView && (
           <div className="main__menu-wrap">
             <div className="main__menu-item"onClick={() => this.toggleComponent("tableView")}>Table Customized for Mobile</div>
           </div>
         )}
-        {tableView && <AntdTable />}
-      </React.Fragment>
+        {tableView && <AntdTable onToggle={this.toggleComponent}/>}
+      </div>
     );
   }
 }

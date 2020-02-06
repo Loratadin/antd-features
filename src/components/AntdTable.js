@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { Table } from "antd";
+import { Table, Button } from "antd";
 
 export default class AntdTable extends PureComponent {
   renderMobileTable = columns => {
@@ -8,6 +8,7 @@ export default class AntdTable extends PureComponent {
     );
   };
   render() {
+    const { onToggle } = this.props;
     const dataSource = [
       {
         key: "1",
@@ -59,7 +60,10 @@ export default class AntdTable extends PureComponent {
       columns = this.renderMobileTable(columns);
     }
     return (
-      <Table dataSource={dataSource} columns={columns} />
+      <React.Fragment>
+        <Button onClick={() => onToggle("tableView")} type="primary" icon="arrow-left" className="back-button">Back to Menu</Button>
+        <Table dataSource={dataSource} columns={columns} />
+      </React.Fragment>
     );
   }
 }
