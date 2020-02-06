@@ -58,6 +58,8 @@ export default class MainPage extends PureComponent {
     if (isMobile) {
       columns = this.renderMobileTable(columns);
     }
-    return <Table dataSource={dataSource} columns={columns} />;
+    return (
+      <Table dataSource={dataSource} columns={columns} />
+    );
   }
 }
